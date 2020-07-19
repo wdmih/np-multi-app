@@ -1,6 +1,6 @@
 import React from "react"
 
-const CreateNPProfile = () => {
+export const CreateNPProfile = () => {
   return (
     <div className="card text-white bg-dark mb-3" style={{ maxWidth: "28rem" }}>
       <div className="card-header">Header</div>
@@ -20,11 +20,7 @@ const CreateNPProfile = () => {
           </div>
           <div className="form-group">
             <label for="NPProfileApikey">APIKEY</label>
-            <input
-              type="text"
-              className="form-control"
-              id="NPProfileApikey"
-            />
+            <input type="text" className="form-control" id="NPProfileApikey" />
           </div>
           <button type="submit" className="btn btn-primary">
             Save
@@ -34,5 +30,3 @@ const CreateNPProfile = () => {
     </div>
   )
 }
-
-export default CreateNPProfile
