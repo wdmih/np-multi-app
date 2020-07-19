@@ -1,23 +1,21 @@
-import React, { useContext } from "react"
-import { AuthContext } from "../context/auth.context"
+import React from "react"
+import { Link } from "react-router-dom"
 
 export const Navbar = () => {
-  const auth = useContext(AuthContext)
-  const logoutHandler = (event) => {
-    event.preventDefault()
-    auth.logout()
-  }
   return (
-    <nav className="navbar navbar-dark bg-dark">
-      <span className="navbar-brand">Navbar</span>
-      <form className="form-inline">
-        <button className="btn btn-outline-success my-2 my-sm-0">Add</button>
-        <button
-          className="btn btn-outline-success my-2 my-sm-0"
-          onClick={logoutHandler}>
-          Logout
-        </button>
-      </form>
+    <nav className="nav-extended red darken-2">
+      <div className="nav-wrapper">
+        <Link to="/" className="brand-logo">
+          Logo
+        </Link>
+        <ul className="right">
+          <li>
+            <Link to="/settings">
+              <i className="material-icons">settings</i>
+            </Link>
+          </li>
+        </ul>
+      </div>
     </nav>
   )
 }

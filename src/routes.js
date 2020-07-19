@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom"
 import { Outgoing } from "./pages/Outgoing"
 import { Incoming } from "./pages/Incoming"
 import { AuthPage } from "./pages/AuthPage"
+import { Settings } from "./pages/Settings"
 
 export const useRoutes = (isAuthenticated) => {
   if (isAuthenticated) {
@@ -15,6 +16,10 @@ export const useRoutes = (isAuthenticated) => {
         <Route path="/incoming">
           <Incoming />
         </Route>
+        <Route path="/settings">
+          <Settings />
+        </Route>
+        <Redirect to="/outgoing" />
       </Switch>
     )
   }

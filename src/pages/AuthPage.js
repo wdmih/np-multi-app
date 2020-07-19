@@ -23,46 +23,49 @@ export const AuthPage = () => {
   }
 
   return (
-    <Fragment>
-      <div className="my-auto card text-white bg-dark">
-        <div className="card-header"></div>
-        <div className="card-body">
-          <form>
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Email address</label>
+    <div className="card m-auto blue-grey lighten-5" style={{ width: 400 }}>
+      <div className="card-content">
+        <span class="card-title">Authorization</span>
+        <form>
+          <div className="row">
+            <div className="input-field">
               <input
-                placeholder="Enter email"
+                id="email"
                 type="email"
                 name="email"
-                className="form-control"
-                id="exampleInputEmail1"
+                className="validate"
                 onChange={changeHandler}
-                aria-describedby="emailHelp"
               />
-              <small id="emailHelp" className="form-text text-muted">
-                We'll never share your email with anyone else.
-              </small>
+              <label htmlFor="email">Email</label>
             </div>
-            <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Password</label>
+          </div>
+          <div className="row">
+            <div className="input-field">
               <input
-                placeholder="Enter password"
+                id="password"
                 type="password"
                 name="password"
-                className="form-control"
-                id="exampleInputPassword1"
+                className="validate"
                 onChange={changeHandler}
               />
+              <label htmlFor="password">Password</label>
             </div>
-            <button className="btn btn-primary" onClick={loginHandler}>
-              Login
-            </button>
-            <button className="btn btn-primary" onClick={registerHandler}>
-              Register
-            </button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
-    </Fragment>
+      <div className="card-action">
+        <button
+          className="btn red darken-2"
+          onClick={loginHandler}
+          style={{ marginRight: 10 }}>
+          Sign in
+        </button>
+        <button
+          className="btn grey lighten-1 black-text"
+          onClick={registerHandler}>
+          Sign Up
+        </button>
+      </div>
+    </div>
   )
 }
