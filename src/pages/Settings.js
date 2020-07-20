@@ -1,17 +1,18 @@
-import React, { useContext } from "react"
-import { AuthContext } from "../context/auth.context"
+import React from "react"
+import { AddNPProfile } from "../components/Settings/AddNPProfile"
+import { NPProfileList } from "../components/Settings/NPProfilesList"
+import { UserProfile } from "../components/Settings/UserProfile"
 
 export const Settings = () => {
-  const auth = useContext(AuthContext)
-  const logoutHandler = (event) => {
-    event.preventDefault()
-    auth.logout()
-  }
   return (
-    <div>
-      <button className="btn" onClick={logoutHandler}>
-        Logout
-      </button>
+    <div className="container">
+      <div className="row">
+        <div className="col s12 m8 offset-m1">
+          <NPProfileList />
+          <AddNPProfile />
+          <UserProfile />
+        </div>
+      </div>
     </div>
   )
 }

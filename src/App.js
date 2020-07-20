@@ -1,12 +1,11 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { BrowserRouter as Router } from "react-router-dom"
 import "materialize-css"
-import { Navbar } from "./components/Navbar"
 import { PageLoading } from "./components/PageLoading"
 import { AuthContext } from "./context/auth.context"
 import { useRoutes } from "./routes"
 import { useAuth } from "./hooks/auth.hook"
-import { Sidebar } from "./components/Sidebar"
+import { DashboardTemplate } from "./templates/Dashboard.template"
 
 function App() {
   const { user, register, login, logout, isLoading } = useAuth()
@@ -27,15 +26,7 @@ function App() {
       ) : (
         <Router>
           {isAuthenticated ? (
-            <Fragment>
-              <Navbar />
-              <div className="row">
-                <div className="col l2">
-                  <Sidebar />
-                </div>
-                <div className="col l10">{routes}</div>
-              </div>
-            </Fragment>
+            <DashboardTemplate isAuthenticated={isAuthenticated} />
           ) : (
             <div className="row no-margin h-100 valign-wrapper">{routes}</div>
           )}

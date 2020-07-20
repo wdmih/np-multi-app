@@ -14,3 +14,19 @@ body,
 .no-margin {
   margin: 0 !important;
 }
+
+main {
+  padding-left: 300px;
+}
+
+main > .container {
+  width: 100%;
+}
+
+.navbar-fixed nav {
+  width: calc(100% - 300px);
+}
+
+.sidenav .divider {
+  margin-top: 15px;
+}
