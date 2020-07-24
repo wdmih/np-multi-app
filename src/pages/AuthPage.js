@@ -1,4 +1,4 @@
-import React, { useState, useContext, Fragment } from "react"
+import React, { useState, useContext } from "react"
 import { AuthContext } from "../context/auth.context"
 
 export const AuthPage = () => {
@@ -25,7 +25,7 @@ export const AuthPage = () => {
   return (
     <div className="card m-auto blue-grey lighten-5" style={{ width: 400 }}>
       <div className="card-content">
-        <span class="card-title">Authorization</span>
+        <span className="card-title">Authorization</span>
         <form>
           <div className="row">
             <div className="input-field">

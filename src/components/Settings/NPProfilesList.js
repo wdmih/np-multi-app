@@ -25,8 +25,8 @@ export const NPProfileList = () => {
                   <span>HgjkkdsjfBJHKBHLNJLJLVLHLCKGKkn,sdhnfdksmjLHFjhf</span>
                 </td>
                 <td>
-                  <button class="btn-flat" style={{ color: "#c62828" }}>
-                    <i class="material-icons">delete</i>
+                  <button className="btn-flat" style={{ color: "#c62828" }}>
+                    <i className="material-icons">delete</i>
                   </button>
                 </td>
               </tr>

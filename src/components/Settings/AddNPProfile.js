@@ -34,7 +34,7 @@ export const AddNPProfile = () => {
           <div className="input-field col s12">
             <button className="btn waves-effect waves-light green">
               Add Profile
-              <i class="material-icons left">add</i>
+              <i className="material-icons left">add</i>
             </button>
           </div>
         </div>
