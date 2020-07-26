@@ -1,6 +1,6 @@
 import React from "react"
 import { AddNPProfile } from "../components/Settings/AddNPProfile"
-import { NPProfileList } from "../components/Settings/NPProfilesList"
+import { NPProfileList } from "../components/Settings/NPProfilesList/NPProfilesList"
 import { UserProfile } from "../components/Settings/UserProfile"
 
 export const Settings = () => {
