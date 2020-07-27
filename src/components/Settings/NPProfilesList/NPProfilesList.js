@@ -3,7 +3,11 @@ import { UserDataContext } from "../../../context/user-data.context"
 import { ProfilesListTableRow } from "./ProfilesListTableRow"
 
 export const NPProfileList = () => {
-  const { userData } = useContext(UserDataContext)
+  const { userData, userDataDelete } = useContext(UserDataContext)
+
+  const deleteApikeyHandler = (id) => {
+    userDataDelete(id)
+  }
 
   return (
     <div className="section">
@@ -22,7 +26,11 @@ export const NPProfileList = () => {
               </thead>
               <tbody>
                 {Object.keys(userData).map((key) => (
-                  <ProfilesListTableRow key={key} value={userData[key]} />
+                  <ProfilesListTableRow
+                    key={key}
+                    item={userData[key]}
+                    deleteApikeyHandler={deleteApikeyHandler}
+                  />
                 ))}
               </tbody>
             </table>

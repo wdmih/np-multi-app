@@ -7,18 +7,19 @@ export const useUserDataDB = () => {
   const [error, setError] = useState(null)
   const [inProgress, setInProgress] = useState(false)
   const message = useMessage()
+  const userId = firebaseAuth.currentUser.uid
 
   const userDataSet = useCallback(
-    async (userUid, npProfileName, npProfileApiKey) => {
+    async (npProfileName, npProfileApiKey) => {
       try {
         setInProgress(true)
         const userDataKey = await firebaseDB
           .ref()
-          .child(`users/${userUid}/np-profiles`)
+          .child(`users/${userId}/np-profiles`)
           .push().key
         const userData = { npProfileName, npProfileApiKey, userDataKey }
         let updates = {}
-        updates[`users/${userUid}/np-profiles/${userDataKey}`] = userData
+        updates[`users/${userId}/np-profiles/${userDataKey}`] = userData
         await firebaseDB
           .ref()
           .update(updates)
@@ -34,17 +35,34 @@ export const useUserDataDB = () => {
         message(error.message)
       }
     },
-    [message]
+    [message, userId]
+  )
+
+  const userDataDelete = useCallback(
+    async (id) => {
+      try {
+        return firebaseDB
+          .ref(`users/${userId}/np-profiles/${id}`)
+          .remove()
+          .then((error) => {
+            if (error) {
+              setError(error)
+              message("There was some problem...")
+            }
+            message("Data successfuly removed")
+          })
+      } catch (error) {
+        message(error.message)
+      }
+    },
+    [message, userId]
   )
 
   useEffect(() => {
-    const userId = firebaseAuth.currentUser.uid
     firebaseDB.ref(`/users/${userId}/np-profiles`).on("value", (snapshot) => {
-      if (snapshot.val()) {
-        setUserData(snapshot.val())
-      }
+      setUserData(snapshot.val())
     })
-  }, [setUserData])
+  }, [setUserData, userId, userDataDelete])
 
-  return { userData, userDataSet, error, inProgress }
+  return { userData, userDataSet, userDataDelete, error, inProgress }
 }

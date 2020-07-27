@@ -1,10 +1,8 @@
 import React, { useContext, useState } from "react"
 import { UserDataContext } from "../../context/user-data.context"
-import { AuthContext } from "../../context/auth.context"
 
 export const AddNPProfile = () => {
   const { userDataSet, inProgress } = useContext(UserDataContext)
-  const { user } = useContext(AuthContext)
   const [form, setForm] = useState({
     npProfileName: "",
     npProfileApiKey: "",
@@ -16,7 +14,7 @@ export const AddNPProfile = () => {
 
   const addProfileHandler = (event) => {
     event.preventDefault()
-    userDataSet(user.uid, form.npProfileName, form.npProfileApiKey)
+    userDataSet(form.npProfileName, form.npProfileApiKey)
     setForm({
       npProfileName: "",
       npProfileApiKey: "",

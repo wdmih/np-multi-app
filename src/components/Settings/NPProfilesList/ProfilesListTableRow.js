@@ -1,6 +1,6 @@
 import React from "react"
-export const ProfilesListTableRow = (itemData) => {
-  const { npProfileName, npProfileApiKey } = itemData.value
+export const ProfilesListTableRow = ({ item, deleteApikeyHandler }) => {
+  const { npProfileName, npProfileApiKey, userDataKey } = item
   return (
     <tr>
       <td>{npProfileName}</td>
@@ -8,7 +8,10 @@ export const ProfilesListTableRow = (itemData) => {
         <span>{npProfileApiKey}</span>
       </td>
       <td>
-        <button className="btn-flat" style={{ color: "#c62828" }}>
+        <button
+          className="btn-flat"
+          style={{ color: "#c62828" }}
+          onClick={() => deleteApikeyHandler(userDataKey)}>
           <i className="material-icons">delete</i>
         </button>
       </td>
