@@ -1,6 +1,6 @@
-import { useState, useCallback, useEffect } from "react"
-import { firebaseAuth } from "../firebase"
-import { useMessage } from "./message.hook"
+import { useCallback, useEffect, useState } from 'react'
+import { firebaseAuth } from '../firebase'
+import { useMessage } from './message.hook'
 
 export const useAuth = () => {
   const [user, setUser] = useState(null)

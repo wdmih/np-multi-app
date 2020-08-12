@@ -1,4 +1,6 @@
-import React from "react"
+import PropTypes from 'prop-types'
+import React from 'react'
+
 export const ProfilesListTableRow = ({ item, deleteApikeyHandler }) => {
   const { npProfileName, npProfileApiKey, userDataKey } = item
   return (
@@ -10,11 +12,16 @@ export const ProfilesListTableRow = ({ item, deleteApikeyHandler }) => {
       <td>
         <button
           className="btn-flat"
-          style={{ color: "#c62828" }}
+          style={{ color: '#c62828' }}
           onClick={() => deleteApikeyHandler(userDataKey)}>
           <i className="material-icons">delete</i>
         </button>
       </td>
     </tr>
   )
+}
+
+ProfilesListTableRow.propTypes = {
+  item: PropTypes.object,
+  deleteApikeyHandler: PropTypes.func
 }

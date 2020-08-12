@@ -1,6 +1,6 @@
-import { firebaseDB, firebaseAuth } from "../firebase"
-import { useCallback, useState, useEffect } from "react"
-import { useMessage } from "./message.hook"
+import { useCallback, useEffect, useState } from 'react'
+import { firebaseAuth, firebaseDB } from '../firebase'
+import { useMessage } from './message.hook'
 
 export const useUserDataDB = () => {
   const [userData, setUserData] = useState(null)
@@ -18,7 +18,7 @@ export const useUserDataDB = () => {
           .child(`users/${userId}/np-profiles`)
           .push().key
         const userData = { npProfileName, npProfileApiKey, userDataKey }
-        let updates = {}
+        const updates = {}
         updates[`users/${userId}/np-profiles/${userDataKey}`] = userData
         await firebaseDB
           .ref()
@@ -26,9 +26,9 @@ export const useUserDataDB = () => {
           .then((error) => {
             if (error) {
               setError(error)
-              message("There was some problem...")
+              message('There was some problem...')
             }
-            message("Data successfuly added")
+            message('Data successfuly added')
           })
         setInProgress(false)
       } catch (error) {
@@ -47,9 +47,9 @@ export const useUserDataDB = () => {
           .then((error) => {
             if (error) {
               setError(error)
-              message("There was some problem...")
+              message('There was some problem...')
             }
-            message("Data successfuly removed")
+            message('Data successfuly removed')
           })
       } catch (error) {
         message(error.message)
@@ -59,7 +59,7 @@ export const useUserDataDB = () => {
   )
 
   useEffect(() => {
-    firebaseDB.ref(`/users/${userId}/np-profiles`).on("value", (snapshot) => {
+    firebaseDB.ref(`/users/${userId}/np-profiles`).on('value', (snapshot) => {
       setUserData(snapshot.val())
     })
   }, [setUserData, userId, userDataDelete])

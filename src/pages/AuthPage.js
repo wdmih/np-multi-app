@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react"
-import { AuthContext } from "../context/auth.context"
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../context/auth.context'
 
 export const AuthPage = () => {
   const auth = useContext(AuthContext)
   const [form, setForm] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: ''
   })
 
   const changeHandler = (event) => {

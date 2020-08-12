@@ -1,4 +1,5 @@
-import React from "react"
+import PropTypes from 'prop-types'
+import React from 'react'
 
 export const ProfilesListItem = ({ item, clickHandler }) => {
   return (
@@ -11,4 +12,9 @@ export const ProfilesListItem = ({ item, clickHandler }) => {
       </a>
     </li>
   )
+}
+
+ProfilesListItem.propTypes = {
+  item: PropTypes.object,
+  clickHandler: PropTypes.func
 }

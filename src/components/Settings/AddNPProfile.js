@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react"
-import { UserDataContext } from "../../context/user-data.context"
+import React, { useContext, useState } from 'react'
+import { UserDataContext } from '../../context/user-data.context'
 
 export const AddNPProfile = () => {
   const { userDataSet, inProgress } = useContext(UserDataContext)
   const [form, setForm] = useState({
-    npProfileName: "",
-    npProfileApiKey: "",
+    npProfileName: '',
+    npProfileApiKey: ''
   })
 
   const changeHandler = (event) => {
@@ -16,8 +16,8 @@ export const AddNPProfile = () => {
     event.preventDefault()
     userDataSet(form.npProfileName, form.npProfileApiKey)
     setForm({
-      npProfileName: "",
-      npProfileApiKey: "",
+      npProfileName: '',
+      npProfileApiKey: ''
     })
   }
 

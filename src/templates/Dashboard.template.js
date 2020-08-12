@@ -1,9 +1,9 @@
-import React, { Fragment } from "react"
-import { Navbar } from "../components/Navbar/Navbar"
-import { useRoutes } from "../routes"
-import { SideNav } from "../components/SideNav"
-import { UserDataContext } from "../context/user-data.context"
-import { useUserDataDB } from "../hooks/user-data.hook"
+import React, { Fragment } from 'react'
+import { Navbar } from '../components/Navbar/Navbar'
+import { SideNav } from '../components/SideNav'
+import { UserDataContext } from '../context/user-data.context'
+import { useUserDataDB } from '../hooks/user-data.hook'
+import { useRoutes } from '../routes'
 
 export const DashboardTemplate = (isAuthenticated) => {
   const {
@@ -11,7 +11,7 @@ export const DashboardTemplate = (isAuthenticated) => {
     userDataSet,
     userDataDelete,
     error,
-    inProgress,
+    inProgress
   } = useUserDataDB()
   const routes = useRoutes(isAuthenticated)
   return (
@@ -21,7 +21,7 @@ export const DashboardTemplate = (isAuthenticated) => {
         userDataSet,
         userDataDelete,
         error,
-        inProgress,
+        inProgress
       }}>
       <Fragment>
         <header>

@@ -1,12 +1,12 @@
-import React, { useContext } from "react"
-import { Link } from "react-router-dom"
-import { UserDataContext } from "../../context/user-data.context"
-import { ProfilesListItem } from "./ProfilesListItem"
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { UserDataContext } from '../../context/user-data.context'
+import { ProfilesListItem } from './ProfilesListItem'
 
 export const Navbar = () => {
   const { userData } = useContext(UserDataContext)
   const setCurrentProfileHandler = (apiKey) => {
-    console.log("setCurrentProfileHandler -> apiKey", apiKey)
+    console.log('setCurrentProfileHandler -> apiKey', apiKey)
   }
   return (
     <div className="navbar-fixed">
@@ -21,13 +21,13 @@ export const Navbar = () => {
                 <ul className="tabs">
                   {userData
                     ? Object.keys(userData).map((key) => (
-                        <ProfilesListItem
-                          key={key}
-                          item={userData[key]}
-                          clickHandler={setCurrentProfileHandler}
-                        />
-                      ))
-                    : ""}
+                      <ProfilesListItem
+                        key={key}
+                        item={userData[key]}
+                        clickHandler={setCurrentProfileHandler}
+                      />
+                    ))
+                    : ''}
                 </ul>
               </li>
             </ul>

@@ -1,6 +1,6 @@
-import React, { useContext } from "react"
-import { UserDataContext } from "../../../context/user-data.context"
-import { ProfilesListTableRow } from "./ProfilesListTableRow"
+import React, { useContext } from 'react'
+import { UserDataContext } from '../../../context/user-data.context'
+import { ProfilesListTableRow } from './ProfilesListTableRow'
 
 export const NPProfileList = () => {
   const { userData, userDataDelete } = useContext(UserDataContext)
@@ -37,7 +37,7 @@ export const NPProfileList = () => {
           </div>
         </div>
       ) : (
-        <p style={{ color: "orange" }}>
+        <p style={{ color: 'orange' }}>
           There are no profile yet. Use form below to add new profile
         </p>
       )}

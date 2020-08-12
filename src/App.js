@@ -1,13 +1,13 @@
-import React from "react"
-import { BrowserRouter as Router } from "react-router-dom"
-import "materialize-css"
-import { PageLoading } from "./components/PageLoading"
-import { AuthContext } from "./context/auth.context"
-import { useRoutes } from "./routes"
-import { useAuth } from "./hooks/auth.hook"
-import { DashboardTemplate } from "./templates/Dashboard.template"
+import 'materialize-css'
+import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { PageLoading } from './components/PageLoading'
+import { AuthContext } from './context/auth.context'
+import { useAuth } from './hooks/auth.hook'
+import { useRoutes } from './routes'
+import { DashboardTemplate } from './templates/Dashboard.template'
 
-function App() {
+function App () {
   const { user, register, login, logout, isLoading } = useAuth()
   const isAuthenticated = !!user
   const routes = useRoutes(isAuthenticated)
@@ -19,7 +19,7 @@ function App() {
         login,
         logout,
         isAuthenticated,
-        isLoading,
+        isLoading
       }}>
       {isLoading ? (
         <PageLoading />
@@ -28,7 +28,7 @@ function App() {
           {isAuthenticated ? (
             <DashboardTemplate isAuthenticated={isAuthenticated} />
           ) : (
-            <div className="row no-margin h-100 valign-wrapper">{routes}</div>
+            <div className='row no-margin h-100 valign-wrapper'>{routes}</div>
           )}
         </Router>
       )}
