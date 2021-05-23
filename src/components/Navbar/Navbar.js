@@ -4,9 +4,9 @@ import { UserDataContext } from '../../context/user-data.context'
 import { ProfilesListItem } from './ProfilesListItem'
 
 export const Navbar = () => {
-  const { userData } = useContext(UserDataContext)
+  const { userData, setCurrentApiKey } = useContext(UserDataContext)
   const setCurrentProfileHandler = (apiKey) => {
-    console.log('setCurrentProfileHandler -> apiKey', apiKey)
+    setCurrentApiKey(apiKey)
   }
   return (
     <div className="navbar-fixed">

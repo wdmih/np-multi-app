@@ -57,3 +57,16 @@ main > .container {
 .profiles-heading > h5 {
   font-weight: bold;
 }
+
+.tabs .tab a.active {
+  background-color: rgba(0,0,0,0.1);
+  color:#ee6e73;
+}
+
+.tabs .tab a:hover,
+.tabs .tab a:focus {
+  background-color: rgba(246,178,181,0.2);
+}
+.tabs .tab a:focus.active {
+  background-color: rgba(0,0,0,0.1);
+}

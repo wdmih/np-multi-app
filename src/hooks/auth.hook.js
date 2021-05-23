@@ -9,14 +9,19 @@ export const useAuth = () => {
 
   const register = useCallback(
     async (credentials) => {
-      try {
+      if (credentials.email && credentials.password) {
         const { user } = await firebaseAuth.createUserWithEmailAndPassword(
           credentials.email,
           credentials.password
-        )
-        setUser(user)
-      } catch (error) {
-        message(error.message)
+        ).catch(error => {
+          message(error.message)
+        })
+
+        if (user) {
+          setUser(user)
+        }
+      } else {
+        message('Enter sign up data')
       }
     },
     [message]
@@ -24,25 +29,27 @@ export const useAuth = () => {
 
   const login = useCallback(
     async (credentials) => {
-      try {
+      if (credentials.email && credentials.password) {
         const { user } = await firebaseAuth.signInWithEmailAndPassword(
           credentials.email,
           credentials.password
-        )
-        setUser(user)
-      } catch (error) {
-        message(error.message)
+        ).catch(error => {
+          message(error.message)
+        })
+        if (user) {
+          setUser(user)
+        }
+      } else {
+        message('Enter sign in data')
       }
     },
     [message]
   )
 
   const logout = useCallback(async () => {
-    try {
-      firebaseAuth.signOut().then(() => setUser(null))
-    } catch (error) {
+    firebaseAuth.signOut().then(() => setUser(null)).catch(error => {
       message(error.message)
-    }
+    })
   }, [message])
 
   useEffect(() => {

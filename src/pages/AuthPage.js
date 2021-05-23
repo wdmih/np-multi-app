@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/auth.context'
 
 export const AuthPage = () => {
@@ -17,10 +17,23 @@ export const AuthPage = () => {
     auth.register({ ...form })
   }
 
-  const loginHandler = (event) => {
+  const loginHandler = useCallback((event) => {
     event.preventDefault()
     auth.login({ ...form })
-  }
+  }, [auth, form])
+
+  useEffect(() => {
+    const listener = event => {
+      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+        console.log('Enter key was pressed. Run your function.')
+        loginHandler(event)
+      }
+    }
+    document.addEventListener('keydown', listener)
+    return () => {
+      document.removeEventListener('keydown', listener)
+    }
+  }, [loginHandler])
 
   return (
     <div className="card m-auto blue-grey lighten-5" style={{ width: 400 }}>
@@ -55,7 +68,7 @@ export const AuthPage = () => {
       </div>
       <div className="card-action">
         <button
-          className="btn red darken-2"
+          className="btn green darken-2"
           onClick={loginHandler}
           style={{ marginRight: 10 }}>
           Sign in

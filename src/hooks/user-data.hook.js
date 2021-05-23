@@ -6,12 +6,14 @@ export const useUserDataDB = () => {
   const [userData, setUserData] = useState(null)
   const [error, setError] = useState(null)
   const [inProgress, setInProgress] = useState(false)
+  const [currentApiKey, setCurrentApiKey] = useState(null)
+
   const message = useMessage()
   const userId = firebaseAuth.currentUser.uid
 
   const userDataSet = useCallback(
     async (npProfileName, npProfileApiKey) => {
-      try {
+      if (npProfileName && npProfileApiKey) {
         setInProgress(true)
         const userDataKey = await firebaseDB
           .ref()
@@ -31,8 +33,8 @@ export const useUserDataDB = () => {
             message('Data successfuly added')
           })
         setInProgress(false)
-      } catch (error) {
-        message(error.message)
+      } else {
+        message('Fields must not be empty')
       }
     },
     [message, userId]
@@ -40,23 +42,23 @@ export const useUserDataDB = () => {
 
   const userDataDelete = useCallback(
     async (id) => {
-      try {
-        return firebaseDB
-          .ref(`users/${userId}/np-profiles/${id}`)
-          .remove()
-          .then((error) => {
-            if (error) {
-              setError(error)
-              message('There was some problem...')
-            }
-            message('Data successfuly removed')
-          })
-      } catch (error) {
-        message(error.message)
-      }
+      await firebaseDB
+        .ref(`users/${userId}/np-profiles/${id}`)
+        .remove()
+        .then((error) => {
+          if (error) {
+            setError(error)
+            message('There was some problem...')
+          }
+          message('Data successfuly removed')
+        })
     },
     [message, userId]
   )
+
+  // const useApiKey = useCallback(apiKey => {
+  //   setCurrentApiKey(apiKey)
+  // })
 
   useEffect(() => {
     firebaseDB.ref(`/users/${userId}/np-profiles`).on('value', (snapshot) => {
@@ -64,5 +66,5 @@ export const useUserDataDB = () => {
     })
   }, [setUserData, userId, userDataDelete])
 
-  return { userData, userDataSet, userDataDelete, error, inProgress }
+  return { userData, userDataSet, userDataDelete, error, inProgress, currentApiKey, setCurrentApiKey }
 }

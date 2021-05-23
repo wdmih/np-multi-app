@@ -7,5 +7,7 @@ export const UserDataContext = createContext({
   userDataSet: noop,
   userDataDelete: noop,
   error: null,
-  inProgress: false
+  inProgress: false,
+  currentApiKey: null,
+  setCurrentApiKey: noop
 })

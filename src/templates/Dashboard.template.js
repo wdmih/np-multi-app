@@ -11,7 +11,9 @@ export const DashboardTemplate = (isAuthenticated) => {
     userDataSet,
     userDataDelete,
     error,
-    inProgress
+    inProgress,
+    currentApiKey,
+    setCurrentApiKey
   } = useUserDataDB()
   const routes = useRoutes(isAuthenticated)
   return (
@@ -21,7 +23,9 @@ export const DashboardTemplate = (isAuthenticated) => {
         userDataSet,
         userDataDelete,
         error,
-        inProgress
+        inProgress,
+        currentApiKey,
+        setCurrentApiKey
       }}>
       <Fragment>
         <header>
